@@ -1,0 +1,107 @@
+
+
+.content {
+    padding: 50px;
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.heart-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Inicialmente invisible */
+    transition: opacity 1s ease-in-out;
+}
+
+.container {
+    position: relative;
+}
+
+/* Corazón */
+.heart {
+    width: 100px;
+    height: 90px;
+    background: #ff4757;
+    position: relative;
+    transform: rotate(-45deg);
+    animation: heartbeat 1.5s infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    width: 100px;
+    height: 90px;
+    background: #ff4757;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart::before {
+    top: -45px;
+    left: 0;
+}
+
+.heart::after {
+    top: 0;
+    left: 45px;
+}
+
+/* Luces */
+.lights {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(255, 71, 87, 0.5), transparent 70%);
+    animation: glow 2s infinite alternate;
+}
+
+/* Partículas de luz */
+.light-particle {
+    width: 5px;
+    height: 5px;
+    background: #ff4757;
+    border-radius: 50%;
+    position: absolute;
+    animation: float 3s infinite ease-in-out;
+    box-shadow: 0 0 10px #ff4757, 0 0 20px #ff4757;
+}
+
+/* Animaciones */
+@keyframes heartbeat {
+    0%, 100% {
+        transform: rotate(-45deg) scale(1);
+    }
+    50% {
+        transform: rotate(-45deg) scale(1.1);
+    }
+}
+
+@keyframes glow {
+    0% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) scale(0.5);
+        opacity: 0;
+    }
+}
